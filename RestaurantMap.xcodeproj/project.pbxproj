@@ -13,6 +13,8 @@
 		110DB71D2D2E5BCA009B89CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 110DB71C2D2E5BCA009B89CD /* Base */; };
 		110DB71F2D2E5BCC009B89CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110DB71E2D2E5BCC009B89CD /* Assets.xcassets */; };
 		110DB7222D2E5BCC009B89CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 110DB7212D2E5BCC009B89CD /* Base */; };
+		110DB72C2D2E5CC8009B89CD /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72B2D2E5CC8009B89CD /* RestaurantMapViewController.swift */; };
+		110DB72E2D2E5CDC009B89CD /* SamYukGooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		110DB71E2D2E5BCC009B89CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		110DB7212D2E5BCC009B89CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		110DB7232D2E5BCC009B89CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		110DB72B2D2E5CC8009B89CD /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
+		110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamYukGooViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		110DB7142D2E5BCA009B89CD /* RestaurantMap */ = {
 			isa = PBXGroup;
 			children = (
+				110DB72A2D2E5BF7009B89CD /* Model */,
+				110DB7292D2E5BF0009B89CD /* ViewController */,
 				110DB7152D2E5BCA009B89CD /* AppDelegate.swift */,
 				110DB7172D2E5BCA009B89CD /* SceneDelegate.swift */,
 				110DB7192D2E5BCA009B89CD /* ViewController.swift */,
@@ -65,6 +71,22 @@
 				110DB7232D2E5BCC009B89CD /* Info.plist */,
 			);
 			path = RestaurantMap;
+			sourceTree = "<group>";
+		};
+		110DB7292D2E5BF0009B89CD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				110DB72B2D2E5CC8009B89CD /* RestaurantMapViewController.swift */,
+				110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		110DB72A2D2E5BF7009B89CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110DB72E2D2E5CDC009B89CD /* SamYukGooViewController.swift in Sources */,
 				110DB71A2D2E5BCA009B89CD /* ViewController.swift in Sources */,
 				110DB7162D2E5BCA009B89CD /* AppDelegate.swift in Sources */,
+				110DB72C2D2E5CC8009B89CD /* RestaurantMapViewController.swift in Sources */,
 				110DB7182D2E5BCA009B89CD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,11 +319,12 @@
 				DEVELOPMENT_TEAM = W43DLLFB4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantMap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "배정훈의 한식기행";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +332,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sean.SeSAC.Assignment.RestaurantMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,11 +352,12 @@
 				DEVELOPMENT_TEAM = W43DLLFB4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantMap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "배정훈의 한식기행";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +365,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sean.SeSAC.Assignment.RestaurantMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

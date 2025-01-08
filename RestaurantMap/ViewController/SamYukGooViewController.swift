@@ -7,23 +7,109 @@
 
 import UIKit
 
-class SamYukGooViewController: UIViewController {
+class SamYukGooViewController: UIViewController, UIPickerViewDataSource {
 
+    var numArray: [String] {
+        var arr: [String] = Array(1...100).map { String($0) }.reversed()
+        return arr
+    }
+
+    @IBOutlet var textField: UITextField!
+    @IBOutlet var gameTextView: UITextView!
+    let pickerView = UIPickerView()
+    @IBOutlet var notiLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        textField.delegate = self
+        textField.inputView = pickerView
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(dismissKeyboard2)))
+        print(numArray)
+        gameTextView.contentInset = UIEdgeInsets(top: gameTextView.bounds.height * 0.2, left: 0, bottom: 0, right: 0)
+        gameTextView.textColor = .secondaryLabel
+        gameTextView.isEditable = false
+        print(countChar(string: "3321"))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setTextField() {
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "최대 숫자를 입력해주세요,",
+            attributes: [
+                .font : UIFont.systemFont(ofSize: 24),
+                .foregroundColor : UIColor.secondaryLabel
+            ])
     }
-    */
+    
+    func countChar(string: String) -> Int {
+        var count = 0
+        for item in string {
+            count += checkSYG(char: item) ? 1 : 0
+        }
+        return count
+    }
+    
+    func checkSYG(char: Character) -> Bool {
+        switch char {
+        case "3":
+            return true
+        case "6":
+            return true
+        case "9":
+            return true
+        default:
+            return false
+        }
+    }
+    
+    // TODO: view에 addGestureRecognizer로 붙이는건 왜 동작 안하는지 디버깅
+    @objc func dismissKeyboard2(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        print(#function)
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        print(#function)
+    }
 
+}
+
+extension SamYukGooViewController: UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        numArray.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        numArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var clapCount = 0
+        
+        let selectedNum = Int(numArray[row])
+        var numRange = Array(1...selectedNum!).map { String($0) }
+        
+        // MARK: foreach, for item in collection 은 item이 immutable해서 이렇게 구현해봤습니다. 혹시 제가 잘못 알고 있는 부분이 있다면 피드백 부탁드립니다!
+        for i in 0..<numRange.count {
+            if numRange[i].contains("3") || numRange[i].contains("6") || numRange[i].contains("9") {
+                print(numRange[i], numRange[i].count)
+                let count = countChar(string: numRange[i])
+                numRange[i] = String(String(repeating: "👏", count: count))
+                clapCount += count
+            }
+        }
+        
+        gameTextView.text = "\(numRange)"
+        notiLabel.text = "숫자 \(selectedNum!)까지 총 박수는 \(clapCount)번 입니다."
+    }
+}
+
+extension SamYukGooViewController: UITextFieldDelegate {
+    
 }
