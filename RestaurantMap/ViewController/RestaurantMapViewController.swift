@@ -15,6 +15,7 @@ final class RestaurantMapViewController: UIViewController {
     
     let food = ["한식", "일식", "중식", "양식", "분식"]
     let cafe = ["샐러드", "카페"]
+    let allCategories = ["한식", "일식", "중식", "양식", "분식", "샐러드", "카페"]
     
     let annotationRawData = RestaurantList().restaurantArray
     
@@ -29,18 +30,28 @@ final class RestaurantMapViewController: UIViewController {
         return annotations
     }
     
+    lazy var filterBarButton: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterBarButtonTapped))
+        barButtonItem.tintColor = .darkGray
+        return barButtonItem
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
         configMapView()
-        allOfAnnotations.forEach {
-            print($0.title!)
-        }
-        
-        print(makeCategorisedAnnotationList(categories: cafe, rawData: annotationRawData))
+//        allOfAnnotations.forEach {
+//            print($0.title!)
+//        }
+//        print(makeCategorisedAnnotationList(categories: cafe, rawData: annotationRawData))
+        setNavigationBar()
+    }
+    
+    func setNavigationBar() {
+        navigationItem.rightBarButtonItem = filterBarButton
     }
 
     func configMapView() {
+        mapView.delegate = self
         let center = CLLocationCoordinate2D(latitude: 37.654105, longitude: 127.047968)
         mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 200, longitudinalMeters: 200)
         mapView.addAnnotations(allOfAnnotations)
@@ -94,6 +105,24 @@ final class RestaurantMapViewController: UIViewController {
         return annotations
     }
     
+    @objc func filterBarButtonTapped(_ sender: UIBarItem) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(cancel)
+        
+        for item in allCategories {
+            let action = UIAlertAction(title: item, style: .default) { _ in
+                let list = self.makeCategorisedAnnotationList(categories: [item], rawData: self.annotationRawData)
+                let annotations = self.makeFilteredAnnotations(data: list)
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                self.mapView.addAnnotations(annotations)
+            }
+            alert.addAction(action)
+        }
+        
+        present(alert, animated: true)
+    }
 }
 
 extension RestaurantMapViewController: MKMapViewDelegate {
