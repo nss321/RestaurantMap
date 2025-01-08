@@ -26,12 +26,15 @@ class SamYukGooViewController: UIViewController, UIPickerViewDataSource {
         pickerView.dataSource = self
         pickerView.delegate = self
         view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(dismissKeyboard2)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
 //        print(numArray)
 //        print(countChar(string: "3321"))
-        print(view.gestureRecognizers)
+//        print(view.gestureRecognizers)
     }
-
+    
+    
     func setUI() {
         textField.attributedPlaceholder = NSAttributedString(
             string: "최대 숫자를 입력해주세요.",
@@ -67,13 +70,7 @@ class SamYukGooViewController: UIViewController, UIPickerViewDataSource {
         }
     }
     
-    // TODO: view에 addGestureRecognizer로 붙이는건 왜 동작 안하는지 디버깅
-    @objc func dismissKeyboard2(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-        print(#function)
-    }
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         print(#function)
     }

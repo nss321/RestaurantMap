@@ -148,9 +148,6 @@
                             <constraint firstItem="wgc-Yq-WNH" firstAttribute="centerX" secondItem="2bh-wL-qQH" secondAttribute="centerX" id="ymu-q5-Xzx"/>
                             <constraint firstItem="D8P-Yb-Q9Q" firstAttribute="top" secondItem="wgc-Yq-WNH" secondAttribute="bottom" constant="44" id="yoo-mK-fyd"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="B9v-8W-MDO" appends="YES" id="3QD-3d-shn"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="9qc-LC-nvK"/>
                     <connections>
@@ -160,11 +157,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0A-be-dKe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="B9v-8W-MDO">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="FxH-5m-xdh" id="hBF-D6-qxl"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4339.6946564885493" y="716.90140845070425"/>
         </scene>
