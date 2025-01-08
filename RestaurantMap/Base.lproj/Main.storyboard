@@ -54,21 +54,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzp-qS-oCu">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="166" width="393" height="652"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="idR-dF-ers">
+                                <rect key="frame" x="16" y="119" width="361" height="32"/>
+                                <segments>
+                                    <segment title="전체"/>
+                                    <segment title="식당"/>
+                                    <segment title="카페"/>
+                                </segments>
+                                <connections>
+                                    <action selector="categoryChanged:" destination="20p-eU-eKr" eventType="valueChanged" id="Hl4-W7-3su"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nkq-RL-1NY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="nkq-RL-1NY" firstAttribute="trailing" secondItem="idR-dF-ers" secondAttribute="trailing" constant="16" id="5uo-sF-11O"/>
                             <constraint firstItem="nkq-RL-1NY" firstAttribute="bottom" secondItem="rzp-qS-oCu" secondAttribute="bottom" id="7M1-vf-ptH"/>
-                            <constraint firstItem="rzp-qS-oCu" firstAttribute="top" secondItem="nkq-RL-1NY" secondAttribute="top" id="GY7-Bw-0eH"/>
+                            <constraint firstItem="idR-dF-ers" firstAttribute="top" secondItem="nkq-RL-1NY" secondAttribute="top" constant="16" id="DDv-i7-0za"/>
+                            <constraint firstItem="idR-dF-ers" firstAttribute="leading" secondItem="nkq-RL-1NY" secondAttribute="leading" constant="16" id="INj-k9-Fdg"/>
                             <constraint firstItem="rzp-qS-oCu" firstAttribute="leading" secondItem="nkq-RL-1NY" secondAttribute="leading" id="JOS-3a-q3a"/>
+                            <constraint firstItem="rzp-qS-oCu" firstAttribute="top" secondItem="idR-dF-ers" secondAttribute="bottom" constant="16" id="TSr-cS-KdX"/>
                             <constraint firstItem="nkq-RL-1NY" firstAttribute="trailing" secondItem="rzp-qS-oCu" secondAttribute="trailing" id="xAX-s7-lJM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="y1H-mg-VeR"/>
                     <connections>
+                        <outlet property="bigCategorySegmentedControl" destination="idR-dF-ers" id="QAv-5d-t23"/>
                         <outlet property="mapView" destination="rzp-qS-oCu" id="JjM-Lb-TM6"/>
                     </connections>
                 </viewController>
