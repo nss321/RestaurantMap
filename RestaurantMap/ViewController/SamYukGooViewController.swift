@@ -10,7 +10,7 @@ import UIKit
 class SamYukGooViewController: UIViewController, UIPickerViewDataSource {
 
     var numArray: [String] {
-        var arr: [String] = Array(1...100).map { String($0) }.reversed()
+        let arr: [String] = Array(1...100).map { String($0) }.reversed()
         return arr
     }
 
@@ -21,26 +21,29 @@ class SamYukGooViewController: UIViewController, UIPickerViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         textField.delegate = self
-        textField.inputView = pickerView
         pickerView.dataSource = self
         pickerView.delegate = self
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(dismissKeyboard2)))
-        print(numArray)
-        gameTextView.contentInset = UIEdgeInsets(top: gameTextView.bounds.height * 0.2, left: 0, bottom: 0, right: 0)
-        gameTextView.textColor = .secondaryLabel
-        gameTextView.isEditable = false
-        print(countChar(string: "3321"))
+//        print(numArray)
+//        print(countChar(string: "3321"))
+        print(view.gestureRecognizers)
     }
-    
-    func setTextField() {
+
+    func setUI() {
         textField.attributedPlaceholder = NSAttributedString(
-            string: "최대 숫자를 입력해주세요,",
+            string: "최대 숫자를 입력해주세요.",
             attributes: [
                 .font : UIFont.systemFont(ofSize: 24),
                 .foregroundColor : UIColor.secondaryLabel
             ])
+        gameTextView.contentInset = UIEdgeInsets(top: gameTextView.bounds.height * 0.2, left: 0, bottom: 0, right: 0)
+        gameTextView.textColor = .secondaryLabel
+        gameTextView.isEditable = false
+        notiLabel.text = "삼육구, 삼육구!\n빈칸을 눌러 삼육구 게임을 시작해보세요!"
+        textField.inputView = pickerView
     }
     
     func countChar(string: String) -> Int {
@@ -105,7 +108,7 @@ extension SamYukGooViewController: UIPickerViewDelegate {
             }
         }
         
-        gameTextView.text = "\(numRange)"
+        gameTextView.text = numRange.joined(separator: ", ")
         notiLabel.text = "숫자 \(selectedNum!)까지 총 박수는 \(clapCount)번 입니다."
     }
 }
