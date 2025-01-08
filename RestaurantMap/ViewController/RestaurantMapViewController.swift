@@ -6,24 +6,45 @@
 //
 
 import UIKit
+import MapKit
 
 class RestaurantMapViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet var mapView: MKMapView!
+    
+    var annotationRawData: [MKAnnotation] {
+        var annotations: [MKAnnotation] = []
+        RestaurantList().restaurantArray.forEach {
+            let singleAnnotation = MKPointAnnotation()
+            singleAnnotation.coordinate = CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
+            singleAnnotation.title = $0.name
+            annotations.append(singleAnnotation)
+        }
+        return annotations
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.delegate = self
+        configMapView()
+        annotationRawData.forEach {
+            print($0.title!)
+        }
     }
-    */
 
+    func configMapView() {
+        let center = CLLocationCoordinate2D(latitude: 37.654105, longitude: 127.047968)
+        mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 200, longitudinalMeters: 200)
+        mapView.addAnnotations(annotationRawData)
+    }
+    
+    func makeAnnotations() {
+        
+    }
+}
+
+extension RestaurantMapViewController: MKMapViewDelegate {
+    
 }

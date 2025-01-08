@@ -15,6 +15,7 @@
 		110DB7222D2E5BCC009B89CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 110DB7212D2E5BCC009B89CD /* Base */; };
 		110DB72C2D2E5CC8009B89CD /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72B2D2E5CC8009B89CD /* RestaurantMapViewController.swift */; };
 		110DB72E2D2E5CDC009B89CD /* SamYukGooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */; };
+		110DB7302D2E72E6009B89CD /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72F2D2E72E6009B89CD /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		110DB7232D2E5BCC009B89CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110DB72B2D2E5CC8009B89CD /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
 		110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamYukGooViewController.swift; sourceTree = "<group>"; };
+		110DB72F2D2E72E6009B89CD /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		110DB72A2D2E5BF7009B89CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				110DB72F2D2E72E6009B89CD /* Restaurant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			files = (
 				110DB72E2D2E5CDC009B89CD /* SamYukGooViewController.swift in Sources */,
 				110DB71A2D2E5BCA009B89CD /* ViewController.swift in Sources */,
+				110DB7302D2E72E6009B89CD /* Restaurant.swift in Sources */,
 				110DB7162D2E5BCA009B89CD /* AppDelegate.swift in Sources */,
 				110DB72C2D2E5CC8009B89CD /* RestaurantMapViewController.swift in Sources */,
 				110DB7182D2E5BCA009B89CD /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vff-Z0-SSX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23068.1"/>
@@ -23,7 +23,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="한식기행"/>
                                 <connections>
-                                    <segue destination="fKa-Lb-Lb0" kind="show" id="Y8c-D8-raU"/>
+                                    <segue destination="20p-eU-eKr" kind="show" id="FXg-qQ-Z1J"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vt0-oS-GMn">
@@ -32,28 +32,29 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="삼-육-구"/>
                                 <connections>
-                                    <segue destination="nlr-y4-Fr5" kind="show" id="J81-2V-WVQ"/>
+                                    <segue destination="FxH-5m-xdh" kind="show" id="s6w-8J-Mfd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jpq-tS-8qk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="5"/>
+            <point key="canvasLocation" x="3155" y="304"/>
         </scene>
         <!--Restaurant Map View Controller-->
         <scene sceneID="a30-Ho-Kw5">
             <objects>
                 <viewController id="20p-eU-eKr" customClass="RestaurantMapViewController" customModule="RestaurantMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mhM-qx-D4W">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzp-qS-oCu">
-                                <rect key="frame" x="0.0" y="56" width="393" height="786"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                         </subviews>
@@ -67,33 +68,36 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="y1H-mg-VeR"/>
+                    <connections>
+                        <outlet property="mapView" destination="rzp-qS-oCu" id="JjM-Lb-TM6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axN-4G-Olj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2486.2595419847326" y="-22.535211267605636"/>
+            <point key="canvasLocation" x="4339.6946564885493" y="-22.535211267605636"/>
         </scene>
         <!--Sam Yuk Goo View Controller-->
         <scene sceneID="cNU-hV-kI8">
             <objects>
                 <viewController id="FxH-5m-xdh" customClass="SamYukGooViewController" customModule="RestaurantMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2bh-wL-qQH">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="369 게임" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgc-Yq-WNH">
-                                <rect key="frame" x="133.66666666666666" y="136" width="125.99999999999997" height="38.333333333333343"/>
+                                <rect key="frame" x="133.66666666666666" y="183" width="125.99999999999997" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="숫자 99까지 총 박수는 45번 입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-mK-fEF">
-                                <rect key="frame" x="44" y="467" width="305" height="76.666666666666629"/>
+                                <rect key="frame" x="44" y="473" width="305" height="76.666666666666629"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="최대 숫자를 입력해주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8P-Yb-Q9Q">
-                                <rect key="frame" x="44" y="218.33333333333334" width="305" height="44.000000000000028"/>
+                                <rect key="frame" x="44" y="265.33333333333331" width="305" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Ymc-vp-E5S"/>
                                 </constraints>
@@ -101,7 +105,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="1 2 👏 4 5 👏 7 8 👏 9 10 11 12 👏 14 15 👏 17 18 👏" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-4H-atw">
-                                <rect key="frame" x="44" y="286.33333333333331" width="305" height="180.66666666666669"/>
+                                <rect key="frame" x="44" y="333.33333333333331" width="305" height="139.66666666666669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -143,45 +147,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2486.2595419847326" y="716.90140845070425"/>
+            <point key="canvasLocation" x="4339.6946564885493" y="716.90140845070425"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Kid-Tr-Oug">
+        <scene sceneID="hVM-2E-kkO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nlr-y4-Fr5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vff-Z0-SSX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="kym-W2-dU5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zYy-mU-hYu">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u8k-Ej-XCi">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FxH-5m-xdh" kind="relationship" relationship="rootViewController" id="bHk-7L-4es"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xC4-bH-9uW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sAS-PM-aEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZJz-It-diY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559.5419847328244" y="716.90140845070425"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="17l-BU-byY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fKa-Lb-Lb0" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="5WM-C5-xYb"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nIB-JX-OjK">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="20p-eU-eKr" kind="relationship" relationship="rootViewController" id="Xhy-ng-cCe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kIz-N4-tX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1559.5419847328244" y="-22.535211267605636"/>
+            <point key="canvasLocation" x="2233" y="304"/>
         </scene>
     </scenes>
     <resources>
