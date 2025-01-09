@@ -39,11 +39,11 @@ final class RestaurantMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configMapView()
+        setNavigationBar()
 //        allOfAnnotations.forEach {
 //            print($0.title!)
 //        }
 //        print(makeCategorisedAnnotationList(categories: cafe, rawData: annotationRawData))
-        setNavigationBar()
     }
     
     func setNavigationBar() {
@@ -51,16 +51,15 @@ final class RestaurantMapViewController: UIViewController {
     }
 
     func configMapView() {
-        mapView.delegate = self
         let center = CLLocationCoordinate2D(latitude: 37.654105, longitude: 127.047968)
+        mapView.delegate = self
         mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 200, longitudinalMeters: 200)
         mapView.addAnnotations(allOfAnnotations)
     }
     
     @IBAction func categoryChanged(_ sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
+//        print(sender.selectedSegmentIndex)
         mapView.removeAnnotations(mapView.annotations)
-        var list: [Restaurant] = []
         var filteredAnnotations: [MKAnnotation] = []
         
         switch sender.selectedSegmentIndex {
@@ -68,13 +67,15 @@ final class RestaurantMapViewController: UIViewController {
             mapView.addAnnotations(allOfAnnotations)
             return
         case 1:
-            list = makeCategorisedAnnotationList(categories: food, rawData: annotationRawData)
-            filteredAnnotations = makeFilteredAnnotations(data: list)
+            filteredAnnotations = makeCategorisedAnnotations(categories: food, rawData: annotationRawData)
+//            list = makeCategorisedRestaurants(categories: food, rawData: annotationRawData)
+//            filteredAnnotations = makeFilteredAnnotations(data: list)
             mapView.addAnnotations(filteredAnnotations)
             return
         case 2:
-            list = makeCategorisedAnnotationList(categories: cafe, rawData: annotationRawData)
-            filteredAnnotations = makeFilteredAnnotations(data: list)
+            filteredAnnotations = makeCategorisedAnnotations(categories: cafe, rawData: annotationRawData)
+//            list = makeCategorisedRestaurants(categories: cafe, rawData: annotationRawData)
+//            filteredAnnotations = makeFilteredAnnotations(data: list)
             mapView.addAnnotations(filteredAnnotations)
             return
         default:
@@ -82,15 +83,12 @@ final class RestaurantMapViewController: UIViewController {
         }
     }
     
-    func makeCategorisedAnnotationList(categories: [String], rawData: [Restaurant]) -> [Restaurant] {
-        
+    func makeCategorisedRestaurants(categories: [String], rawData: [Restaurant]) -> [Restaurant] {
         var categorised: [Restaurant] = []
-        
         for item in categories {
             let list = rawData.filter{ $0.category == item }
             categorised.append(contentsOf: list)
         }
-        
         return categorised
     }
     
@@ -105,6 +103,30 @@ final class RestaurantMapViewController: UIViewController {
         return annotations
     }
     
+    /// Returns Categorised MKPointAnnotation Array
+    /// - Parameters:
+    ///   - categories: Categories to filter annotations
+    ///   - rawData: Restaurant Struct Array to categorise
+    /// - Returns: Categorised MKPointAnnotation Array
+    func makeCategorisedAnnotations(categories: [String], rawData: [Restaurant]) -> [MKAnnotation] {
+        var categorised: [Restaurant] = []
+        var annotations: [MKAnnotation] = []
+        
+        for item in categories {
+            let list = rawData.filter{ $0.category == item }
+            categorised.append(contentsOf: list)
+        }
+        
+        categorised.forEach {
+            let singleAnnotation = MKPointAnnotation()
+            singleAnnotation.coordinate = CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
+            singleAnnotation.title = $0.name
+            annotations.append(singleAnnotation)
+        }
+        
+        return annotations
+    }
+    
     @objc func filterBarButtonTapped(_ sender: UIBarItem) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
@@ -113,10 +135,11 @@ final class RestaurantMapViewController: UIViewController {
         
         for item in allCategories {
             let action = UIAlertAction(title: item, style: .default) { _ in
-                let list = self.makeCategorisedAnnotationList(categories: [item], rawData: self.annotationRawData)
-                let annotations = self.makeFilteredAnnotations(data: list)
-                self.mapView.removeAnnotations(self.mapView.annotations)
-                self.mapView.addAnnotations(annotations)
+                self.bigCategorySegmentedControl.selectedSegmentIndex = 0
+                let annotations = self.makeCategorisedAnnotations(categories: [item], rawData: self.annotationRawData)
+//                self.mapView.removeAnnotations(self.mapView.annotations)
+//                self.mapView.addAnnotations(annotations)
+                self.mapView.replaceAnnotations(to: annotations)
             }
             alert.addAction(action)
         }
@@ -128,3 +151,4 @@ final class RestaurantMapViewController: UIViewController {
 extension RestaurantMapViewController: MKMapViewDelegate {
     
 }
+

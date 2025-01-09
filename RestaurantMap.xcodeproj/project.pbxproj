@@ -17,6 +17,7 @@
 		110DB72E2D2E5CDC009B89CD /* SamYukGooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */; };
 		110DB7302D2E72E6009B89CD /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB72F2D2E72E6009B89CD /* Restaurant.swift */; };
 		110DB7332D2EA3FD009B89CD /* ConfigUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB7322D2EA3EA009B89CD /* ConfigUI.swift */; };
+		110DB7352D2F4A76009B89CD /* MKMapView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DB7342D2F4A6E009B89CD /* MKMapView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		110DB72D2D2E5CDC009B89CD /* SamYukGooViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamYukGooViewController.swift; sourceTree = "<group>"; };
 		110DB72F2D2E72E6009B89CD /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		110DB7322D2EA3EA009B89CD /* ConfigUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigUI.swift; sourceTree = "<group>"; };
+		110DB7342D2F4A6E009B89CD /* MKMapView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		110DB7142D2E5BCA009B89CD /* RestaurantMap */ = {
 			isa = PBXGroup;
 			children = (
+				110DB7362D2F4A79009B89CD /* Extension */,
 				110DB7312D2EA3D7009B89CD /* Component */,
 				110DB72A2D2E5BF7009B89CD /* Model */,
 				110DB7292D2E5BF0009B89CD /* ViewController */,
@@ -101,6 +104,14 @@
 				110DB7322D2EA3EA009B89CD /* ConfigUI.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		110DB7362D2F4A79009B89CD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				110DB7342D2F4A6E009B89CD /* MKMapView+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				110DB7162D2E5BCA009B89CD /* AppDelegate.swift in Sources */,
 				110DB72C2D2E5CC8009B89CD /* RestaurantMapViewController.swift in Sources */,
 				110DB7182D2E5BCA009B89CD /* SceneDelegate.swift in Sources */,
+				110DB7352D2F4A76009B89CD /* MKMapView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
